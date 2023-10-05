@@ -57,6 +57,7 @@ input{
     border:transparent;
     background-color:var(--navyblue)
   }
+
   
   .leaflet-marker-icon{
     width: 0;

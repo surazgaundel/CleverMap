@@ -31,6 +31,7 @@ export default function Map({places}) {
         className='map'
         center={[17.416762, 78.439944]}
         zoom={13}
+        onClick={()=>console.log('Clck')}
         >
         <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const position = [40.574215, -105.08333];
+const position = [17.416762, 78.439944];
 const GEOCODE_URL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&langCode=EN&location=";
 
 export default function MapMarker() {
   const [markerPosition, setMarkerPosition] = useState(null);
   const [address, setAddress] = useState("");
 
-  const setMarker = (mapClickInfo) => {
-    setMarkerPosition(mapClickInfo.latlng);
-    reverseGeoCoding(mapClickInfo.latlng);
+  const setMarker =async (e) => {
+    console.log(e)
+    setMarkerPosition(e.latlng);
+    await reverseGeoCoding(e.latlng);
   }
 
   const getMarker = () => {
@@ -34,6 +35,7 @@ export default function MapMarker() {
   );
 
   const reverseGeoCoding = async (coordinates) => {
+    console.log(coordinates)
     const data = await (await fetch(GEOCODE_URL + `${coordinates.lng},${coordinates.lat}`)).json();
     const addressLabel = data.address !== undefined ? data.address.LongLabel : "Unknown";
     setAddress(addressLabel);
