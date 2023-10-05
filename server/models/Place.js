@@ -12,6 +12,9 @@ const Place= new mongoose.Schema({
     location:{
         type:String,
         required:true
+    },
+    coord:{
+        type:[Number]
     }
 });
 
